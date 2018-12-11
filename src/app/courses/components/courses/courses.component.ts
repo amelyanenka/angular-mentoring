@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {Course} from '../course';
-import {CoursesService} from '../courses.service';
+import { CourseInterface } from '../../interfaces/course.interface';
+import { CoursesService } from '../../services/courses.service';
 
 @Component({
   selector: 'app-courses',
@@ -8,7 +8,7 @@ import {CoursesService} from '../courses.service';
   styleUrls: ['./courses.component.css']
 })
 export class CoursesComponent implements OnInit {
-  public courses: Course[] = [];
+  public courses: CourseInterface[] = [];
 
   constructor(private coursesService: CoursesService) { }
 
@@ -16,12 +16,12 @@ export class CoursesComponent implements OnInit {
     this.courses = this.coursesService.getCourses();
   }
 
-  addCourse(course: Course): Course[] {
+  addCourse(course: CourseInterface): CourseInterface[] {
     this.courses.push(course);
     return this.courses;
   }
 
-  deleteCourse(course: Course): Course[] {
+  deleteCourse(course: CourseInterface): CourseInterface[] {
     this.courses.splice(this.courses.findIndex(course), 1);
     return this.courses;
   }
