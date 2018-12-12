@@ -36,7 +36,14 @@ table {
 }
 
 body {
-  padding: 20px;
+  height: calc(100vh - 20px);
+  padding: 0 20px;
+  background-image: linear-gradient(to right, #9892CF, #CFA5CA);
   font-family: Tahoma, sans-serif;
   font-size: 16px;
+}
+
+.wrapper {
+  position: relative;
+  min-height: 100%;
 }
