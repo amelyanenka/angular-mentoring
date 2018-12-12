@@ -1,6 +1,6 @@
 header {
   height: 60px;
-  padding: 10px 20px;
+  padding: 6px 20px;
   display: flex;
   justify-content: space-between;
   background-color: #ECEAF9;
@@ -24,7 +24,7 @@ header {
 .logout p {
   font-size: 12px;
   margin-right: 10px;
-  color: #AEA6BF;
+  color: #BBB9C8;
 }
 
 .logout p span {
@@ -33,6 +33,7 @@ header {
 }
 
 .logout button {
+  width: 100px;
   padding: 5px 15px;
   background: #ECEAF9;
   outline: none;
