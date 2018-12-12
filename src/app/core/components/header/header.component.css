@@ -1,0 +1,49 @@
+header {
+  height: 60px;
+  padding: 10px 20px;
+  display: flex;
+  justify-content: space-between;
+  background-color: #ECEAF9;
+}
+
+.logo, .logout {
+  display: flex;
+  align-items: center;
+}
+
+.logo img {
+  height: 30px;
+  margin-right: 10px;
+}
+
+.logo h1 {
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.logout p {
+  font-size: 12px;
+  margin-right: 10px;
+  color: #AEA6BF;
+}
+
+.logout p span {
+  font-weight: 600;
+  color: #000;
+}
+
+.logout button {
+  padding: 5px 15px;
+  background: #ECEAF9;
+  outline: none;
+  border: 1px solid #D8A8CB;
+  border-radius: 4px;
+}
+
+.logout button:hover {
+  cursor: pointer;
+}
+
+.logout button:active {
+  transform: scale(0.96);
+}

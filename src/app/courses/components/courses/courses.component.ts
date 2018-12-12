@@ -15,14 +15,4 @@ export class CoursesComponent implements OnInit {
   ngOnInit() {
     this.courses = this.coursesService.getCourses();
   }
-
-  addCourse(course: CourseInterface): CourseInterface[] {
-    this.courses.push(course);
-    return this.courses;
-  }
-
-  deleteCourse(course: CourseInterface): CourseInterface[] {
-    this.courses.splice(this.courses.findIndex(course), 1);
-    return this.courses;
-  }
 }
