@@ -36,14 +36,26 @@ table {
 }
 
 body {
-  height: calc(100vh - 20px);
+  height: 100%;
+  min-height: 100vh;
   padding: 0 20px;
   background-image: linear-gradient(to right, #9892CF, #CFA5CA);
-  font-family: Tahoma, sans-serif;
+  font-family: Calibri, sans-serif;
   font-size: 16px;
 }
 
 .wrapper {
-  position: relative;
-  min-height: 100%;
+  height: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.content {
+  flex-grow: 1;
+}
+
+button {
+  font-family: Calibri, sans-serif;
+  font-size: 14px;
 }

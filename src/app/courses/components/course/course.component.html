@@ -1,1 +1,14 @@
-<p>{{ course.title }}</p>
+<div class='course'>
+  <div class='main'>
+    <div class='title'>
+      <p>{{ course.title }}</p>
+      <button class='edit'></button>
+      <button class='delete'></button>
+    </div>
+    <div class='date'>
+      <div>{{ course.duration }}</div>
+      <div>{{ course.creation }}</div>
+    </div>
+  </div>
+  <div class='description'>{{ course.description }}</div>
+</div>

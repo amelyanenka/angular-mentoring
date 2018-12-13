@@ -1,5 +1,7 @@
-<div class='content'>
+<div class='courses'>
   <app-search></app-search>
-  <app-course *ngFor="let course of courses" [course]="course"></app-course>
+  <app-course *ngFor='let course of courses' [course]='course'></app-course>
+  <div class='showMore'>
+    <button>Show More</button>
+  </div>
 </div>
-

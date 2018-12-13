@@ -1,0 +1,65 @@
+.course {
+  padding: 20px;
+  margin-bottom: 10px;
+  background-color: #FFF;
+  border-radius: 4px;
+  transition: .5s ease-in-out all;
+}
+
+.course:hover {
+  box-shadow: 0 0 30px 0 #b3bfed;
+}
+
+.main {
+  display: flex;
+  justify-content: space-between;
+}
+
+.title {
+  display: flex;
+}
+
+.title p {
+  margin-right: 20px;
+  font-size: 20px;
+}
+
+.title button {
+  height: 20px;
+  width: 20px;
+  margin-right: 10px;
+  outline: none;
+  border: none;
+  border-radius: 50%;
+}
+
+.title button:hover {
+  cursor: pointer;
+}
+
+.title button:active {
+  transform: scale(0.96);
+}
+
+.title button.edit {
+  background: #7A81FF url('../../../../assets/edit-button.png') no-repeat center;
+  background-size: 60%;
+}
+
+.title button.delete {
+  background: #7A81FF url('../../../../assets/delete-button.png') no-repeat center;
+  background-size: 60%;
+}
+
+.date {
+  display: flex;
+}
+
+.date div {
+  margin-left: 20px;
+}
+
+.description {
+  margin-top: 15px;
+  font-size: 12px;
+}

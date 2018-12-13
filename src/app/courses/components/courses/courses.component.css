@@ -1,3 +1,14 @@
 .content {
   padding-bottom: 80px;
 }
+
+.courses {
+  padding: 6px 20px;
+  background-color: #F6F6FD;
+}
+
+.showMore {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
