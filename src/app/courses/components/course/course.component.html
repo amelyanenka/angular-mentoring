@@ -1,9 +1,9 @@
-<div class='course'>
+<div class='course' (click)='openItem(course)'>
   <div class='main'>
     <div class='title'>
       <p>{{ course.title }}</p>
       <button class='edit'></button>
-      <button class='delete'></button>
+      <button class='delete' (click)='deleteItem($event)'></button>
     </div>
     <div class='date'>
       <div>{{ course.duration }}</div>

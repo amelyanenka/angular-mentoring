@@ -1,5 +1,6 @@
-import { Component, Input, OnInit } from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import { Course } from '../../entities/course';
+import {CourseInterface} from '../../interfaces/course.interface';
 
 @Component({
   selector: 'app-course',
@@ -8,10 +9,19 @@ import { Course } from '../../entities/course';
 })
 export class CourseComponent implements OnInit {
   @Input() public course: Course;
+  @Output() public delete: EventEmitter = new EventEmitter();
 
   constructor() { }
 
   ngOnInit() {
   }
 
+  openItem(course: CourseInterface): void {
+    console.log('course item with id ' + course.id + ' is opened');
+  }
+
+  deleteItem(event): void {
+    event.stopPropagation();
+    this.delete.emit(this.course);
+  }
 }

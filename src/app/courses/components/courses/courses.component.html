@@ -1,5 +1,9 @@
 <div class='courses'>
   <app-search></app-search>
-  <app-course *ngFor='let course of courses' [course]='course'></app-course>
-  <button>Show More</button>
+  <app-course
+    *ngFor='let course of courses'
+    [course]='course'
+    (delete)='deleteItem($event)'>
+  </app-course>
+  <button (click)='showMore()'>Show More</button>
 </div>

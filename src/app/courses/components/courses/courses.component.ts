@@ -15,4 +15,12 @@ export class CoursesComponent implements OnInit {
   ngOnInit() {
     this.courses = this.coursesService.getCourses();
   }
+
+  deleteItem(course: CourseInterface): void {
+    console.log('course item with id ' + course.id + ' is deleted');
+  }
+
+  showMore(): void {
+    console.log('showMore button is clicked');
+  }
 }
