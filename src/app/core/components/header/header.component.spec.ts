@@ -14,15 +14,13 @@ describe('HeaderComponent', () => {
   }));
 
   beforeEach(() => {
-    // fixture.detectChanges();
     fixture = TestBed.createComponent(HeaderComponent);
     component = fixture.componentInstance;
   });
 
-  it('should create', () => {
-    // expect(component).toBeTruthy();
+  it('should have a default heading', () => {
     const nativeElement: HTMLElement = fixture.nativeElement;
-    const h1: HTMLElement = nativeElement.querySelector('p');
-    expect(h1.textContent).toBe('You\'re signed in as John Doe');
+    const text: HTMLElement = nativeElement.querySelector('p');
+    expect(text.textContent).toBe('You\'re signed in as John Doe');
   });
 });

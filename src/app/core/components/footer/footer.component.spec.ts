@@ -19,7 +19,9 @@ describe('FooterComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
+  it('should have a default heading', () => {
+    const nativeElement: HTMLElement = fixture.nativeElement;
+    const element: HTMLElement = nativeElement.querySelector('footer');
+    expect(element.textContent).toBe('All rights reserved 2018');
   });
 });

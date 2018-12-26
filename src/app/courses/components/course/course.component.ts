@@ -1,5 +1,4 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { Course } from '../../entities/course';
 import { CourseInterface } from '../../interfaces/course.interface';
 
 @Component({
@@ -8,7 +7,7 @@ import { CourseInterface } from '../../interfaces/course.interface';
   styleUrls: ['./course.component.css']
 })
 export class CourseComponent implements OnInit {
-  @Input() public course: Course;
+  @Input() public course: CourseInterface;
   @Output() public delete: EventEmitter<CourseInterface> = new EventEmitter<CourseInterface>();
 
   constructor() { }
