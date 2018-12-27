@@ -19,7 +19,7 @@ describe('BreadcrumbsComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it('BreadcrumbsComponent creation', () => {
     expect(component).toBeTruthy();
   });
 });

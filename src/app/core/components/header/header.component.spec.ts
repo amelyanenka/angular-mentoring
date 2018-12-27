@@ -18,7 +18,11 @@ describe('HeaderComponent', () => {
     component = fixture.componentInstance;
   });
 
-  it('should have a default heading', () => {
+  it('HeaderComponent creation', () => {
+    expect(component).toBeTruthy();
+  });
+
+  it('Login user', () => {
     const nativeElement: HTMLElement = fixture.nativeElement;
     const text: HTMLElement = nativeElement.querySelector('p');
     expect(text.textContent).toBe('You\'re signed in as John Doe');

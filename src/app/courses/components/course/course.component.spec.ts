@@ -16,10 +16,9 @@ describe('CourseComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(CourseComponent);
     component = fixture.componentInstance;
-    fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it('CourseComponent creation', () => {
     expect(component).toBeTruthy();
   });
 });

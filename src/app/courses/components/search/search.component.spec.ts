@@ -1,5 +1,5 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { FormsModule } from '@angular/forms';
 import { SearchComponent } from './search.component';
 
 describe('SearchComponent', () => {
@@ -8,7 +8,8 @@ describe('SearchComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ SearchComponent ]
+      imports: [ FormsModule ],
+      declarations: [ SearchComponent ],
     })
     .compileComponents();
   }));
@@ -19,7 +20,7 @@ describe('SearchComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it('SearchComponent creation', () => {
     expect(component).toBeTruthy();
   });
 });
