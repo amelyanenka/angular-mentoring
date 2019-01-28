@@ -5,13 +5,13 @@
   <div class='main'>
     <div class='title'>
       <span *ngIf='course.topRated'>★</span>
-      <p>{{ course.title }}</p>
+      <p>{{ course.title | uppercase }}</p>
       <button class='edit'></button>
       <button class='delete' (click)='deleteItem($event)'></button>
     </div>
     <div class='date'>
-      <div>{{ course.duration }}</div>
-      <div>{{ course.creation }}</div>
+      <div>{{ course.duration | time }}</div>
+      <div>{{ course.creation | date:'dd.MM.yyyy' }}</div>
     </div>
   </div>
   <div class='description'>{{ course.description }}</div>

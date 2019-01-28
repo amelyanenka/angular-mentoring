@@ -5,13 +5,17 @@ import { CoursesComponent } from './components/courses/courses.component';
 import { CourseComponent } from './components/course/course.component';
 import { SearchComponent } from './components/search/search.component';
 import { BorderDirective } from './directives/border.directive';
+import { TimePipe } from './pipes/time.pipe';
+import { OrderByPipe } from './pipes/orderby.pipe';
 
 @NgModule({
   declarations: [
     CoursesComponent,
     CourseComponent,
     SearchComponent,
-    BorderDirective
+    BorderDirective,
+    TimePipe,
+    OrderByPipe
   ],
   imports: [
     FormsModule,
