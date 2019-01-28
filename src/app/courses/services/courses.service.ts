@@ -16,7 +16,8 @@ export class CoursesService {
         creation: 1548693343651,
         duration: '1h 45min',
         description: 'Prepare for MTA Exam 98-367. Learn the core concepts of operating system and network-level security to avoid ' +
-        'threats and eliminate system vulnerabilities.'
+        'threats and eliminate system vulnerabilities.',
+        topRated: false
       },
       {
         id: 2,
@@ -24,7 +25,8 @@ export class CoursesService {
         creation: 1547491002266,
         duration: '1h 24min',
         description: 'Learn today\'s online marketing techniques and find out how how to build a successful online marketing campaign' +
-        'for all digital channels: search, video, social, email, and display.'
+        'for all digital channels: search, video, social, email, and display.',
+        topRated: true
       },
       {
         id: 3,
@@ -32,7 +34,8 @@ export class CoursesService {
         creation: 1548720649402,
         duration: '49min',
         description: 'Learn how to use Google Analytics to find out how your website is performing. Discover how to use this powerful ' +
-        'platform to measure site traffic, ad performance, and social media activity.'
+        'platform to measure site traffic, ad performance, and social media activity.',
+        topRated: false
       },
       {
         id: 4,
@@ -40,7 +43,8 @@ export class CoursesService {
         creation: 1548700064324,
         duration: '1h 12min',
         description: 'Learn how to connect programming theory to practice. This series of training videos explains basic programming ' +
-        'concepts such as functions, variables, and loops by comparing them to real-life scenarios.'
+        'concepts such as functions, variables, and loops by comparing them to real-life scenarios.',
+        topRated: false
       },
       {
         id: 5,
@@ -48,7 +52,8 @@ export class CoursesService {
         creation: 15491326332744,
         duration: '54min',
         description: 'Learn to work with the most common Git commands, and use GitHub to clone, explore, and create templates from ' +
-        'existing projects.'
+        'existing projects.',
+        topRated: true
       }
     ];
   }
