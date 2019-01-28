@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { CourseInterface } from '../../interfaces/course.interface';
 
 @Component({
@@ -6,14 +6,9 @@ import { CourseInterface } from '../../interfaces/course.interface';
   templateUrl: './course.component.html',
   styleUrls: ['./course.component.css']
 })
-export class CourseComponent implements OnInit {
+export class CourseComponent {
   @Input() public course: CourseInterface;
   @Output() public delete: EventEmitter<CourseInterface> = new EventEmitter<CourseInterface>();
-
-  constructor() { }
-
-  ngOnInit() {
-  }
 
   openItem(course: CourseInterface): void {
     console.log('course item with id ' + course.id + ' is opened');

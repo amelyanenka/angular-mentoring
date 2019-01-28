@@ -16,6 +16,16 @@ export class CoursesComponent implements OnInit {
     this.courses = this.coursesService.getCourses();
   }
 
+  onSearch(searchValue: string): void {
+    if (searchValue) {
+      this.courses = this.courses.filter(course => {
+        return course.title.toUpperCase().indexOf(searchValue.toUpperCase()) > -1;
+      });
+    } else {
+      this.courses = this.coursesService.getCourses();
+    }
+  }
+
   deleteItem(course: CourseInterface): void {
     console.log('course item with id ' + course.id + ' is deleted');
   }

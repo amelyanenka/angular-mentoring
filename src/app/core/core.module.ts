@@ -5,7 +5,11 @@ import { BreadcrumbsComponent } from './components/breadcrumbs/breadcrumbs.compo
 import { FooterComponent } from './components/footer/footer.component';
 
 @NgModule({
-  declarations: [HeaderComponent, BreadcrumbsComponent, FooterComponent],
+  declarations: [
+    HeaderComponent,
+    BreadcrumbsComponent,
+    FooterComponent
+  ],
   imports: [
     CommonModule,
   ],

@@ -11,7 +11,7 @@ export class OrderByPipe implements PipeTransform {
     }
 
     return courses.sort((a, b) => {
-      return a[orderBy] < b[orderBy] ? -1 : a[orderBy] > b[orderBy] ? 1 : 0;
+      return a[orderBy] - b[orderBy];
     });
   }
 }
