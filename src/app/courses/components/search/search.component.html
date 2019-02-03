@@ -1,6 +1,9 @@
 <div class='search'>
   <div class='item'>
-    <input type='text' placeholder='name' [(ngModel)]='searchValue'>
+    <input type='text'
+           placeholder='name'
+           [ngModel]='searchValue'
+           (ngModelChange)='onChangedSearchValue($event)'>
     <button (click)='onSearch()'>Search</button>
   </div>
   <button>Add course</button>

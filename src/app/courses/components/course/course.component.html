@@ -1,5 +1,5 @@
 <div class='course'
-     (click)='openItem(course)'
+     (click)='onOpen(course)'
      [border]='course.creation'
      [ngClass]="{'top-rated': course.topRated}">
   <div class='main'>
@@ -7,7 +7,7 @@
       <span *ngIf='course.topRated'>★</span>
       <p>{{ course.title | uppercase }}</p>
       <button class='edit'></button>
-      <button class='delete' (click)='deleteItem($event)'></button>
+      <button class='delete' (click)='onDelete($event)'></button>
     </div>
     <div class='date'>
       <div>{{ course.duration | time }}</div>

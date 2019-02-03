@@ -8,12 +8,17 @@ import { CoursesService } from '../../services/courses.service';
   styleUrls: ['./courses.component.css']
 })
 export class CoursesComponent implements OnInit {
-  public courses: CourseInterface[] = [];
+  private courses: CourseInterface[] = [];
+  private searchValue: string;
 
   constructor(private coursesService: CoursesService) { }
 
   ngOnInit() {
     this.courses = this.coursesService.getCourses();
+  }
+
+  onChangedSearchValue(searchValue: string): void {
+    this.searchValue = searchValue;
   }
 
   onSearch(searchValue: string): void {
@@ -26,11 +31,16 @@ export class CoursesComponent implements OnInit {
     }
   }
 
-  deleteItem(course: CourseInterface): void {
-    console.log('course item with id ' + course.id + ' is deleted');
+  onDelete(course: CourseInterface): void {
+    const result: boolean = confirm('Do you really want to delete this course?');
+    if (result) {
+      this.coursesService.deleteCourse(course.id);
+      this.courses = this.coursesService.getCourses();
+      this.onSearch(this.searchValue);
+    }
   }
 
-  showMore(): void {
+  onShowMore(): void {
     console.log('showMore button is clicked');
   }
 }

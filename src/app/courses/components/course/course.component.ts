@@ -10,11 +10,11 @@ export class CourseComponent {
   @Input() public course: CourseInterface;
   @Output() public delete: EventEmitter<CourseInterface> = new EventEmitter<CourseInterface>();
 
-  openItem(course: CourseInterface): void {
+  onOpen(course: CourseInterface): void {
     console.log('course item with id ' + course.id + ' is opened');
   }
 
-  deleteItem(event): void {
+  onDelete(event): void {
     event.stopPropagation();
     this.delete.emit(this.course);
   }
