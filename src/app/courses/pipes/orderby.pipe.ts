@@ -10,8 +10,6 @@ export class OrderByPipe implements PipeTransform {
       return courses;
     }
 
-    return courses.sort((a, b) => {
-      return a[orderBy] - b[orderBy];
-    });
+    return courses.sort((a, b) => a[orderBy] - b[orderBy]);
   }
 }
