@@ -27,4 +27,4 @@ import { OrderByPipe } from './pipes/orderby.pipe';
     SearchComponent
   ]
 })
-export class CoursesModule { }
+export class CoursesModule {}
