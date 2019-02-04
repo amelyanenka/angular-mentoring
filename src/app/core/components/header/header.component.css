@@ -7,7 +7,7 @@ header {
   background-color: #ECEAF9;
 }
 
-.logo, .logout {
+.logo, .auth {
   display: flex;
   align-items: center;
 }
@@ -22,18 +22,18 @@ header {
   font-weight: 600;
 }
 
-.logout p {
+.auth p {
   font-size: 12px;
   margin-right: 10px;
   color: #BBB9C8;
 }
 
-.logout p span {
+.auth p span {
   font-weight: 600;
   color: #000;
 }
 
-.logout button {
+.auth button {
   width: 100px;
   padding: 5px 15px;
   background: #ECEAF9;
@@ -43,12 +43,12 @@ header {
   transition: .2s ease-in-out all;
 }
 
-.logout button:hover {
+.auth button:hover {
   box-shadow: 0 0 12px 0 rgba(115, 115, 255, 0.4);
   cursor: pointer;
 }
 
-.logout button:active {
+.auth button:active {
   box-shadow: 0 0 4px 0 rgba(115, 115, 255, 0.4);
   transition: none;
 }

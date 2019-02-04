@@ -1,7 +1,15 @@
 <div class='wrapper'>
   <div class='content'>
     <app-header></app-header>
-    <app-auth></app-auth>
+    <form>
+      <div>
+        <input [(ngModel)]='user' type='text' name='user' placeholder='Name'>
+      </div>
+      <div>
+        <input [(ngModel)]='pass' type='password' name='password' placeholder='Password'>
+      </div>
+      <button type='submit' (click)='onLogin()'>Log in</button>
+    </form>
   </div>
   <app-footer></app-footer>
 </div>

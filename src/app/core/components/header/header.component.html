@@ -3,8 +3,9 @@
     <img src='../../../../assets/logo.png' />
     <h1>ngVideo</h1>
   </div>
-  <div class='logout'>
-    <p>You're signed in as <span>John Doe</span></p>
-    <button (click)='onLogout'>Log out</button>
+  <div class='auth'>
+    <p *ngIf='isAuthenticated()'>You're signed in as <span>John Doe</span></p>
+    <button type='button' *ngIf='!isAuthenticated()' (click)='onLogin()'>Log in</button>
+    <button type='button' *ngIf='isAuthenticated()' (click)='onLogout()'>Log out</button>
   </div>
 </header>
