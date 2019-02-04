@@ -11,7 +11,7 @@ export class AuthService {
 
   logout(): void {}
 
-  isAuthenticated(): boolean {}
+  isAuthenticated(): void {}
 
-  getUserInfo(): string {}
+  getUserInfo(): void {}
 }
