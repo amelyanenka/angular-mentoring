@@ -7,16 +7,16 @@
 }
 
 .top-rated {
-  background-color: #ffcdd4;
+  background-color: #FFCDD4;
 }
 
 .course:hover {
-  box-shadow: 0 0 30px 0 #b3bfed;
+  box-shadow: 0 0 30px 0 #B3BFED;
   cursor: pointer;
 }
 
 .course:active {
-  box-shadow: 0 0 12px 0 #b3bfed;
+  box-shadow: 0 0 12px 0 #B3BFED;
   transition: none;
 }
 

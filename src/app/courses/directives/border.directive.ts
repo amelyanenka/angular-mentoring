@@ -17,9 +17,9 @@ export class BorderDirective implements OnInit {
     let borderColor = null;
 
     if (creationDate < currentDate && creationDate >= (currentDate - 14 * 24 * 60 * 60 * 1000)) {
-      borderColor = '#2b7d1b';
+      borderColor = '#2B7D1B';
     } else if (creationDate > currentDate) {
-      borderColor = '#0092d2';
+      borderColor = '#0092D2';
     }
 
     this.el.nativeElement.style.border = '2px solid ' + borderColor;

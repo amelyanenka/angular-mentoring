@@ -21,7 +21,7 @@ button {
 }
 
 button:hover {
-  box-shadow: 0 0 30px 0 #b3bfed;
+  box-shadow: 0 0 30px 0 #B3BFED;
   cursor: pointer;
 }
 
