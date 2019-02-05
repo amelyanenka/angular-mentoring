@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CourseInterface } from '../../interfaces/course.interface';
 import { CoursesService } from '../../services/courses.service';
+import { SearchPipe } from '../../pipes/search.pipe';
 
 @Component({
   selector: 'app-courses',
@@ -11,7 +12,7 @@ export class CoursesComponent implements OnInit {
   private courses: CourseInterface[] = [];
   private searchValue: string;
 
-  constructor(private coursesService: CoursesService) { }
+  constructor(private coursesService: CoursesService, private searchPipe: SearchPipe) { }
 
   ngOnInit() {
     this.courses = this.coursesService.getCourses();
@@ -23,9 +24,7 @@ export class CoursesComponent implements OnInit {
 
   onSearch(searchValue: string): void {
     if (searchValue) {
-      this.courses = this.courses.filter(course => {
-        return course.title.toUpperCase().indexOf(searchValue.toUpperCase()) > -1;
-      });
+      this.courses = this.searchPipe.transform(this.courses, searchValue);
     } else {
       this.courses = this.coursesService.getCourses();
     }

@@ -7,6 +7,7 @@ import { SearchComponent } from './components/search/search.component';
 import { BorderDirective } from './directives/border.directive';
 import { TimePipe } from './pipes/time.pipe';
 import { OrderByPipe } from './pipes/orderby.pipe';
+import { SearchPipe } from './pipes/search.pipe';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { OrderByPipe } from './pipes/orderby.pipe';
     SearchComponent,
     BorderDirective,
     TimePipe,
-    OrderByPipe
+    OrderByPipe,
+    SearchPipe
   ],
   imports: [
     FormsModule,
@@ -25,6 +27,9 @@ import { OrderByPipe } from './pipes/orderby.pipe';
     CoursesComponent,
     CourseComponent,
     SearchComponent
+  ],
+  providers: [
+    SearchPipe
   ]
 })
 export class CoursesModule {}
