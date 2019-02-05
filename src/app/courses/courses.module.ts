@@ -24,9 +24,7 @@ import { SearchPipe } from './pipes/search.pipe';
     CommonModule
   ],
   exports: [
-    CoursesComponent,
-    CourseComponent,
-    SearchComponent
+    CoursesComponent
   ]
 })
 export class CoursesModule {}

@@ -15,7 +15,8 @@ import { CoursesModule } from './courses/courses.module';
     CoreModule,
     CoursesModule
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [
+    AppComponent
+  ]
 })
 export class AppModule {}
