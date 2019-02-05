@@ -6,7 +6,8 @@ import { SearchPipe } from '../../pipes/search.pipe';
 @Component({
   selector: 'app-courses',
   templateUrl: './courses.component.html',
-  styleUrls: ['./courses.component.css']
+  styleUrls: ['./courses.component.css'],
+  providers: [SearchPipe]
 })
 export class CoursesComponent implements OnInit {
   public courses: CourseInterface[] = [];
