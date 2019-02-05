@@ -9,7 +9,7 @@ import { SearchPipe } from '../../pipes/search.pipe';
   styleUrls: ['./courses.component.css']
 })
 export class CoursesComponent implements OnInit {
-  private courses: CourseInterface[] = [];
+  public courses: CourseInterface[] = [];
   private searchValue: string;
 
   constructor(private coursesService: CoursesService, private searchPipe: SearchPipe) { }
