@@ -5,6 +5,7 @@ import { AddCourseComponent } from './components/add-course/add-course.component
 import { CreationComponent } from './components/creation/creation.component';
 import { DurationComponent } from './components/duration/duration.component';
 import { AuthorsComponent } from './components/authors/authors.component';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -15,10 +16,11 @@ import { AuthorsComponent } from './components/authors/authors.component';
   ],
   imports: [
     FormsModule,
-    CommonModule
+    CommonModule,
+    SharedModule
   ],
-  exports: [
+  /*exports: [
     AddCourseComponent
-  ]
+  ]*/
 })
 export class AddCourseModule {}

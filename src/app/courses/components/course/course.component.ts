@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { CourseInterface } from '../../interfaces/course.interface';
+import { CourseInterface } from '../../../shared/interfaces/course.interface';
 
 @Component({
   selector: 'app-course',

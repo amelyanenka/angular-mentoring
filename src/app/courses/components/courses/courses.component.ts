@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { CourseInterface } from '../../interfaces/course.interface';
+import { CourseInterface } from '../../../shared/interfaces/course.interface';
 import { CoursesService } from '../../services/courses.service';
-import { SearchPipe } from '../../pipes/search.pipe';
+import { SearchPipe } from '../../../shared/pipes/search.pipe';
 
 @Component({
   selector: 'app-courses',

@@ -10,3 +10,7 @@ input {
   font-family: Calibri, sans-serif;
   font-size: 12px;
 }
+
+span {
+  margin-left: 10px;
+}

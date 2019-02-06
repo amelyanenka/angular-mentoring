@@ -13,12 +13,12 @@
         <app-creation [creationDate]='creationDate'></app-creation>
       </div>
       <div>
-        <app-duration></app-duration>
+        <app-duration (duration)='duration' (changedDuration)='onChangedDuration($event)'></app-duration>
       </div>
       <div>
         <app-authors></app-authors>
       </div>
-      <div>
+      <div class='buttons'>
         <button type='button'>Save</button>
         <button type='button'>Cancel</button>
       </div>

@@ -7,8 +7,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AddCourseComponent implements OnInit {
   public creationDate: number;
+  public duration: number;
 
   ngOnInit() {
     this.creationDate = Date.now();
+  }
+
+  onChangedDuration(duration: number): void {
+    this.duration = duration;
   }
 }

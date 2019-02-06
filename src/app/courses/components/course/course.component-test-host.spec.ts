@@ -1,7 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { Component } from '@angular/core';
-import { CourseInterface } from '../../interfaces/course.interface';
+import { CourseInterface } from '../../../shared/interfaces/course.interface';
 import { CourseComponent } from './course.component';
 import { CoursesComponent } from '../courses/courses.component';
 
@@ -15,10 +15,11 @@ import { CoursesComponent } from '../courses/courses.component';
 class TestHostComponent {
   public course: CourseInterface = {
     id: 1,
-    title: 'stubTitle',
-    creation: 'stubCreation',
-    duration: 'stubDuration',
-    description: 'stubDescription'
+    title: 'title',
+    creation: 1549451108750,
+    duration: 65,
+    description: 'description',
+    topRated: false
   };
   public deletedCourse: CourseInterface;
   public deleteItem(deletedCourse: CourseInterface) { this.deletedCourse = deletedCourse; }
@@ -31,7 +32,7 @@ describe('CourseComponent', () => {
 
   beforeEach(async(() => {
     coursesComponent = {
-      deleteItem: jasmine.createSpy('deleteItem')
+      onDelete: jasmine.createSpy('deleteItem')
     };
 
     TestBed.configureTestingModule({

@@ -1,2 +1,6 @@
 <p>Duration:</p>
-<input type='text' name='duration' placeholder=''>
+<input type='text'
+       name='duration'
+       [(ngModel)]='duration'
+       (ngModelChange)='onChangedDuration($event)'>
+<span>{{duration | time}}</span>
