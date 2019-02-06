@@ -31,8 +31,8 @@ describe('SearchComponent', () => {
   });
 
   it('Search method calling', () => {
-    spyOn(component, 'search');
-    component.search();
-    expect(component.search).toHaveBeenCalled();
+    spyOn(component, 'onSearch');
+    component.onSearch();
+    expect(component.onSearch).toHaveBeenCalled();
   });
 });

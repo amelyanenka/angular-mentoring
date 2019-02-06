@@ -58,8 +58,8 @@ export class CoursesService {
     return this.courses;
   }
 
-  public createCourse(title: string, duration: number, description: string, topRated: boolean) {
-    const course = new Course(this.courses[this.courses.length - 1].id + 1, title, Date.now(), duration, description, topRated);
+  public createCourse(title: string, creation: number, duration: number, description: string, topRated: boolean) {
+    const course = new Course(this.courses[this.courses.length - 1].id + 1, title, creation, duration, description, topRated);
     this.courses.push(course);
   }
 

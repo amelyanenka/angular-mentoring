@@ -10,7 +10,7 @@ export class HeaderComponent {
   constructor(private authService: AuthService) {}
 
   onLogin(): void {
-    window.location.href = '';
+    // TODO: redirect to create course page
   }
 
   onLogout(): void {

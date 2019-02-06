@@ -1,12 +1,12 @@
 import { CourseInterface } from '../interfaces/course.interface';
 
 export class Course implements CourseInterface {
-  private id: number;
-  private title: string;
-  private creation: number;
-  private duration: number;
-  private description: string;
-  private topRated: boolean;
+  id: number;
+  title: string;
+  creation: number;
+  duration: number;
+  description: string;
+  topRated: boolean;
 
   constructor (id: number, title: string, creation: number, duration: number, description: string, topRated: boolean) {
     this.id = id;

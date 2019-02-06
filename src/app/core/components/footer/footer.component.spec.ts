@@ -26,6 +26,6 @@ describe('FooterComponent', () => {
   it('Footer title', () => {
     const nativeElement: HTMLElement = fixture.nativeElement;
     const element: HTMLElement = nativeElement.querySelector('footer');
-    expect(element.textContent).toBe('All rights reserved 2018');
+    expect(element.textContent).toBe('All rights reserved 2019');
   });
 });

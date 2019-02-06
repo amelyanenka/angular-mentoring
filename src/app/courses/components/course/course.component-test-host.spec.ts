@@ -51,10 +51,11 @@ describe('CourseComponent', () => {
 
     const expectedDeletedCourse = {
       id: 1,
-      title: 'stubTitle',
-      creation: 'stubCreation',
-      duration: 'stubDuration',
-      description: 'stubDescription'
+      title: 'title',
+      creation: 1549451108750,
+      duration: 65,
+      description: 'description',
+      topRated: false
     };
 
     const deleteButton = fixture.debugElement.query(By.css('.delete'));

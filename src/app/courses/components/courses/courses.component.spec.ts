@@ -37,8 +37,8 @@ describe('CoursesComponent', () => {
   });
 
   it('Show more method calling', () => {
-    spyOn(component, 'showMore');
-    component.showMore();
-    expect(component.showMore).toHaveBeenCalled();
+    spyOn(component, 'onShowMore');
+    component.onShowMore();
+    expect(component.onShowMore).toHaveBeenCalled();
   });
 });

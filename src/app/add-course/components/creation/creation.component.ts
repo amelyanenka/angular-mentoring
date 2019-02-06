@@ -6,5 +6,5 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./creation.component.css']
 })
 export class CreationComponent {
-  @Input() public creationDate: string;
+  @Input() public creation: string;
 }
