@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { CoreModule } from './core/core.module';
+import { SharedModule } from './shared/shared.module';
 import { CoursesModule } from './courses/courses.module';
 // import { AuthModule } from './auth/auth.module';
 // import { AddCourseModule } from './add-course/add-course.module';
@@ -15,7 +15,7 @@ import { CoursesModule } from './courses/courses.module';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    CoreModule,
+    SharedModule,
     CoursesModule,
     // AuthModule,
     // AddCourseModule

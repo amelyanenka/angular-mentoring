@@ -4,10 +4,16 @@ import { BorderDirective } from './directives/border.directive';
 import { TimePipe } from './pipes/time.pipe';
 import { OrderByPipe } from './pipes/orderby.pipe';
 import { SearchPipe } from './pipes/search.pipe';
+import { HeaderComponent } from './components/header/header.component';
+import { BreadcrumbsComponent } from './components/breadcrumbs/breadcrumbs.component';
+import { FooterComponent } from './components/footer/footer.component';
 
 
 @NgModule({
   declarations: [
+    HeaderComponent,
+    BreadcrumbsComponent,
+    FooterComponent,
     BorderDirective,
     TimePipe,
     OrderByPipe,
@@ -17,6 +23,9 @@ import { SearchPipe } from './pipes/search.pipe';
     CommonModule
   ],
   exports: [
+    HeaderComponent,
+    BreadcrumbsComponent,
+    FooterComponent,
     BorderDirective,
     TimePipe,
     OrderByPipe,
