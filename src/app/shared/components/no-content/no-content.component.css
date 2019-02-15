@@ -1,0 +1,10 @@
+p {
+  width: 400px;
+  height: 200px;
+  margin: 200px auto;
+  background-color: #ECEAF9;
+  border-radius: 4px;
+  font-size: 20px;
+  text-align: center;
+  line-height: 200px;
+}
