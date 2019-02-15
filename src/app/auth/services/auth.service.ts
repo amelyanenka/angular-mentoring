@@ -1,23 +1,51 @@
-import { Injectable, OnInit } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { UserInterface } from '../../shared/interfaces/user.interface';
-import { User } from '../../shared/entities/user';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
 })
-export class AuthService implements OnInit {
+export class AuthService {
   private userNameLocalStorageKey = 'name';
   private tokenLocalStorageKey = 'token';
-  private user: UserInterface;
+  private users: UserInterface[] = [
+    {
+      id: 1,
+      name: 'John Doe',
+      pass: '123'
+    },
+    {
+      id: 2,
+      name: 'Vadzim Yermalitski',
+      pass: '123'
+    },
+    {
+      id: 3,
+      name: 'Vasily',
+      pass: '123'
+    },
+    {
+      id: 4,
+      name: 'Ivan Amelyanenka',
+      pass: '123'
+    },
+    {
+      id: 5,
+      name: 'noname',
+      pass: '123'
+    }
+  ];
 
-  ngOnInit() {
-    this.user = new User(1, 'John', 'Doe');
-  }
+  constructor(private router: Router) {}
 
-  login(): void {
-    if (!this.isAuthenticated()) {
-      localStorage.setItem(this.userNameLocalStorageKey, this.user.getFullName());
+  login(name, pass): void {
+    const authUser = this.users.find(user => user.name === name);
+    if (!this.isAuthenticated() && authUser && authUser.pass === pass) {
+      localStorage.setItem(this.userNameLocalStorageKey, authUser.name);
       localStorage.setItem(this.tokenLocalStorageKey, '1');
+      this.router.navigateByUrl('/courses');
+    } else {
+      alert('Wrong name or password');
     }
   }
 

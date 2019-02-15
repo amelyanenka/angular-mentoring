@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
-import { UserInterface } from '../../../shared/interfaces/user.interface';
 
 @Component({
   selector: 'app-auth',
@@ -8,12 +7,12 @@ import { UserInterface } from '../../../shared/interfaces/user.interface';
   styleUrls: ['./auth.component.css']
 })
 export class AuthComponent {
-  public user: UserInterface;
+  public name: string;
   public pass: string;
 
   constructor(private authService: AuthService) {}
 
-  onLogin(): void {
-    this.authService.login();
+  onLogin(name, pass): void {
+    this.authService.login(name, pass);
   }
 }
