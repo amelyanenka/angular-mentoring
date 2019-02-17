@@ -18,9 +18,6 @@ import { SharedModule } from '../shared/shared.module';
     FormsModule,
     CommonModule,
     SharedModule
-  ],
-  /*exports: [
-    AddCourseComponent
-  ]*/
+  ]
 })
 export class AddCourseModule {}

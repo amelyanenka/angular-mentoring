@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { UserInterface } from '../../shared/interfaces/user.interface';
 import { Router } from '@angular/router';
+import { UserInterface } from '../../shared/interfaces/user.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -43,7 +43,7 @@ export class AuthService {
     if (!this.isAuthenticated() && authUser && authUser.pass === pass) {
       localStorage.setItem(this.userNameLocalStorageKey, authUser.name);
       localStorage.setItem(this.tokenLocalStorageKey, '1');
-      this.router.navigateByUrl('/courses');
+      this.router.navigate(['courses']);
     } else {
       alert('Wrong name or password');
     }

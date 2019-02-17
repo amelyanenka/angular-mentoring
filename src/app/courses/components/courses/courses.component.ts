@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { CourseInterface } from '../../../shared/interfaces/course.interface';
-import { CoursesService } from '../../services/courses.service';
 import { SearchPipe } from '../../../shared/pipes/search.pipe';
+import { CoursesService } from '../../services/courses.service';
+import { AuthService } from '../../../auth/services/auth.service';
 
 @Component({
   selector: 'app-courses',
@@ -13,10 +15,15 @@ export class CoursesComponent implements OnInit {
   public courses: CourseInterface[] = [];
   private searchValue: string;
 
-  constructor(private coursesService: CoursesService, private searchPipe: SearchPipe) { }
+  constructor(private router: Router, private searchPipe: SearchPipe, private coursesService: CoursesService,
+              private authService: AuthService) { }
 
   ngOnInit() {
-    this.courses = this.coursesService.getCourses();
+    if (!this.authService.isAuthenticated()) {
+      this.router.navigate(['auth']);
+    } else {
+      this.courses = this.coursesService.getCourses();
+    }
   }
 
   onChangedSearchValue(searchValue: string): void {

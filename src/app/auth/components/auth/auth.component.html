@@ -1,13 +1,11 @@
 <div class='form-wrapper'>
   <div class='form-container'>
-    <form>
-      <div>
-        <input [(ngModel)]='name' type='text' name='user' placeholder='Name'>
-      </div>
-      <div>
-        <input [(ngModel)]='pass' type='password' name='password' placeholder='Password'>
-      </div>
-      <button type='submit' (click)='onLogin(name, pass)'>Log in</button>
-    </form>
+    <div>
+      <input [(ngModel)]='name' type='text' name='user' placeholder='Name'>
+    </div>
+    <div>
+      <input [(ngModel)]='pass' type='password' name='password' placeholder='Password'>
+    </div>
+    <button type='submit' (click)='onLogin(name, pass)'>Log in</button>
   </div>
 </div>

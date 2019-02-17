@@ -10,6 +10,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
   background-color: #ECEAF9;
   border-radius: 4px;
 }
@@ -37,7 +38,6 @@ input:focus::placeholder {
 button {
   height: 30px;
   width: 100px;
-  margin-left: 50px;
   padding: 5px 15px;
   background: #7A81FF;
   outline: none;

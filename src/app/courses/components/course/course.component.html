@@ -6,7 +6,7 @@
     <div class='title'>
       <span *ngIf='course.topRated'>★</span>
       <p>{{ course.title | uppercase }}</p>
-      <button class='edit'></button>
+      <button class='edit' (click)='onEdit(course)'></button>
       <button class='delete' (click)='onDelete($event)'></button>
     </div>
     <div class='date'>
