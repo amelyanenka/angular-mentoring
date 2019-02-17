@@ -13,7 +13,7 @@
         <app-creation [creation]='creation'></app-creation>
       </div>
       <div>
-        <app-duration (duration)='duration' (changedDuration)='onChangedDuration($event)'></app-duration>
+        <app-duration [(duration)]='duration' (changedDuration)='onChangedDuration($event)'></app-duration>
       </div>
       <div>
         <app-authors></app-authors>
