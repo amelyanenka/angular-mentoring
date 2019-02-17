@@ -13,19 +13,21 @@ export class AddCourseComponent implements OnInit {
   public description: string;
   public creation: number;
   public duration: number;
+  private exist: boolean;
 
   constructor(private router: Router, private activatedRoute: ActivatedRoute, private coursesService: CoursesService) {}
 
   ngOnInit() {
     this.creation = Date.now();
     this.activatedRoute.params.subscribe(data => {
-      if (typeof +data.id === 'number') {
+      if (data.id !== 'new') {
         this.id = +data.id;
         const course = this.coursesService.getCourseById(this.id);
         this.title = course.title;
         this.description = course.description;
         this.creation = course.creation;
         this.duration = course.duration;
+        this.exist = true;
       }
     });
   }
@@ -35,7 +37,12 @@ export class AddCourseComponent implements OnInit {
   }
 
   onSave() {
-    this.coursesService.createCourse(this.title, this.creation, this.duration, this.description, false);
+    if (this.exist) {
+      this.coursesService.updateCourse(this.id, this.title, this.description);
+    } else {
+      this.coursesService.createCourse(this.title, this.creation, this.duration, this.description, false);
+    }
+    this.router.navigate(['courses']);
   }
 
   onCancel() {

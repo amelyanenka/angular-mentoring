@@ -59,6 +59,7 @@ export class CoursesService {
   }
 
   public createCourse(title: string, creation: number, duration: number, description: string, topRated: boolean) {
+    this.courses = this.courses.sort((a, b) => a.id - b.id);
     const course = new Course(this.courses[this.courses.length - 1].id + 1, title, creation, duration, description, topRated);
     this.courses.push(course);
   }
@@ -67,9 +68,10 @@ export class CoursesService {
     return this.courses.find(course => course.id === id);
   }
 
-  public updateCourse(id: number, prop: string, value: any) {
+  public updateCourse(id: number, title: string, description: string) {
     const course = this.getCourseById(id);
-    course[prop] = value;
+    course.title = title;
+    course.description = description;
   }
 
   public deleteCourse(id: number): void {
