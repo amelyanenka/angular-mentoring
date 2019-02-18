@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { CoursesService } from '../../../courses/services/courses.service';
 
 @Component({
   selector: 'app-breadcrumbs',
@@ -7,7 +8,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./breadcrumbs.component.css']
 })
 export class BreadcrumbsComponent {
-  constructor(private router: Router) {}
+  constructor(private router: Router, private coursesService: CoursesService) {}
 
   getBreadcrumbsLength() {
     return this.router.url.slice(1).split('/').length;
@@ -15,6 +16,15 @@ export class BreadcrumbsComponent {
 
   getBreadcrumbs() {
     return this.router.url.slice(1).split('/');
+  }
+
+  getLastBreadcrumb() {
+    const breadcrumbs: string[] = this.getBreadcrumbs();
+    let lastBreadcrumb: string = breadcrumbs[breadcrumbs.length - 1];
+    if (lastBreadcrumb !== 'new') {
+      lastBreadcrumb = this.coursesService.getCourseById(+lastBreadcrumb).title;
+    }
+    return lastBreadcrumb;
   }
 
   navigateFromBreadcrumbs(breadcrumb: string): void {
