@@ -1,6 +1,6 @@
 <div *ngIf='getBreadcrumbsLength() > 1'>
-  <span *ngFor='let breadcrumb of getBreadcrumbs(); let last = last'>
-    <span (click)='navigateFromBreadcrumbs(breadcrumb)' *ngIf='!last' class='clickable'>{{breadcrumb | firstCharUppercase}}</span>
+  <span *ngFor='let breadcrumb of getBreadcrumbs(); let last = last; let index = index'>
+    <span (click)='navigateFromBreadcrumbs(index)' *ngIf='!last' class='clickable'>{{breadcrumb | firstCharUppercase}}</span>
     <span *ngIf='!last'> / </span>
     <span *ngIf='last' class='last'>{{getLastBreadcrumb() | firstCharUppercase}}</span>
   </span>

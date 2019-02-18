@@ -27,7 +27,17 @@ export class BreadcrumbsComponent {
     return lastBreadcrumb;
   }
 
-  navigateFromBreadcrumbs(breadcrumb: string): void {
-    this.router.navigate([breadcrumb]);
+  navigateFromBreadcrumbs(index: number): void {
+    const breadcrumbs: string[] = this.getBreadcrumbs();
+    let navigateBreadcrumbs = '/';
+
+    for (let i = 0; i < index + 1; i++) {
+      navigateBreadcrumbs += breadcrumbs[i];
+      if (i !== index) {
+        navigateBreadcrumbs += '/';
+      }
+    }
+
+    this.router.navigateByUrl(navigateBreadcrumbs);
   }
 }
