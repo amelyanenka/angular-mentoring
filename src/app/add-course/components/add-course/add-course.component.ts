@@ -13,7 +13,7 @@ export class AddCourseComponent implements OnInit {
   public description: string;
   public creation: number;
   public duration: number;
-  private exist: boolean;
+  public exist = false;
 
   constructor(private router: Router, private activatedRoute: ActivatedRoute, private coursesService: CoursesService) {}
 
