@@ -4,6 +4,7 @@ import { BorderDirective } from './directives/border.directive';
 import { TimePipe } from './pipes/time.pipe';
 import { OrderByPipe } from './pipes/orderby.pipe';
 import { SearchPipe } from './pipes/search.pipe';
+import { FirstCharUppercasePipe } from './pipes/firstcharuppercase.pipe';
 import { HeaderComponent } from './components/header/header.component';
 import { BreadcrumbsComponent } from './components/breadcrumbs/breadcrumbs.component';
 import { FooterComponent } from './components/footer/footer.component';
@@ -18,7 +19,8 @@ import { NoContentComponent } from './components/no-content/no-content.component
     BorderDirective,
     TimePipe,
     OrderByPipe,
-    SearchPipe
+    SearchPipe,
+    FirstCharUppercasePipe
   ],
   imports: [
     CommonModule
@@ -30,7 +32,8 @@ import { NoContentComponent } from './components/no-content/no-content.component
     BorderDirective,
     TimePipe,
     OrderByPipe,
-    SearchPipe
+    SearchPipe,
+    FirstCharUppercasePipe
   ]
 })
 export class SharedModule {}

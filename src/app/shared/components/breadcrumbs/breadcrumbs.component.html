@@ -1,1 +1,8 @@
-<div>Courses</div>
+<div *ngIf='getBreadcrumbsLength() > 1'>
+  <span *ngFor='let breadcrumb of getBreadcrumbs(); let last = last'>
+    <span (click)='navigateFromBreadcrumbs(breadcrumb)' *ngIf='!last' style='cursor: pointer'>{{breadcrumb | firstCharUppercase}}</span>
+    <span *ngIf='!last'>/</span>
+    <span *ngIf='last'>{{breadcrumb | firstCharUppercase}}</span>
+  </span>
+</div>
+<div *ngIf='getBreadcrumbsLength() === 1'>{{getBreadcrumbs()[0] | firstCharUppercase}}</div>
