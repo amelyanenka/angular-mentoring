@@ -1,4 +1,5 @@
 import { Routes } from '@angular/router';
+import { CanActivateGuard } from './shared/guards/canactivate.guard';
 import { CoursesComponent } from './courses/components/courses/courses.component';
 import { AuthComponent } from './auth/components/auth/auth.component';
 import { NoContentComponent } from './shared/components/no-content/no-content.component';
@@ -8,11 +9,11 @@ export const ROUTES: Routes = [
   {path: '', redirectTo: 'courses', pathMatch: 'full'},
 
   // redirect to
-  {path: 'courses', component: CoursesComponent},
+  {path: 'courses', component: CoursesComponent, canActivate: [CanActivateGuard]},
 
   // pages
-  {path: 'courses/:id', component: AddCourseComponent},
-  {path: 'courses/new', component: AddCourseComponent},
+  {path: 'courses/:id', component: AddCourseComponent, canActivate: [CanActivateGuard]},
+  {path: 'courses/new', component: AddCourseComponent, canActivate: [CanActivateGuard]},
   {path: 'auth', component: AuthComponent},
 
   // 404

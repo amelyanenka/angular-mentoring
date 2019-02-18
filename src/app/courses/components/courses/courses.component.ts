@@ -19,11 +19,7 @@ export class CoursesComponent implements OnInit {
               private authService: AuthService) { }
 
   ngOnInit() {
-    if (!this.authService.isAuthenticated()) {
-      this.router.navigate(['auth']);
-    } else {
-      this.courses = this.coursesService.getCourses();
-    }
+    this.courses = this.coursesService.getCourses();
   }
 
   onChangedSearchValue(searchValue: string): void {
