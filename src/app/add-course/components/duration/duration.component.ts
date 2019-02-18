@@ -6,6 +6,7 @@ import {Component, EventEmitter, Input, Output} from '@angular/core';
   styleUrls: ['./duration.component.css']
 })
 export class DurationComponent {
+  @Input() exist: boolean;
   @Input() duration: number;
   @Output() changedDuration: EventEmitter<number> = new EventEmitter<number>();
 

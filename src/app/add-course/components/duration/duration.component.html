@@ -2,5 +2,6 @@
 <input type='text'
        name='duration'
        [(ngModel)]='duration'
-       (ngModelChange)='onChangedDuration($event)'>
+       (ngModelChange)='onChangedDuration($event)'
+       disabled='{{exist}}'>
 <span>{{duration | time}}</span>
