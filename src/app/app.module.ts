@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { ROUTES } from './app.routes';
 import { CanActivateGuard } from './shared/guards/canactivate.guard';
+import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { SharedModule } from './shared/shared.module';
 import { CoursesModule } from './courses/courses.module';
@@ -16,6 +17,7 @@ import { AddCourseModule } from './add-course/add-course.module';
   imports: [
     BrowserModule,
     RouterModule.forRoot(ROUTES, {useHash: true}),
+    HttpClientModule,
     SharedModule,
     CoursesModule,
     AuthModule,

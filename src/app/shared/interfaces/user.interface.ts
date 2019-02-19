@@ -1,5 +1,7 @@
 export interface UserInterface {
   id: number;
-  name: string;
-  pass: string;
+  fakeToken: string;
+  name: object;
+  login: string;
+  password: string;
 }
