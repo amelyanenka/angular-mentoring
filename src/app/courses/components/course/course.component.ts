@@ -13,15 +13,11 @@ export class CourseComponent {
 
   constructor(private router: Router) {}
 
-  onOpen(course: CourseInterface): void {
-    console.log('course item with id ' + course.id + ' is opened');
-  }
-
-  onEdit(course: CourseInterface): void {
+  public onEdit(course: CourseInterface): void {
     this.router.navigate(['courses', course.id]);
   }
 
-  onDelete(event): void {
+  public onDelete(event): void {
     event.stopPropagation();
     this.delete.emit(this.course);
   }

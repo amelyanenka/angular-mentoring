@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { CourseInterface } from '../../../shared/interfaces/course.interface';
 import { SearchPipe } from '../../../shared/pipes/search.pipe';
+import { CourseInterface } from '../../../shared/interfaces/course.interface';
 import { CoursesService } from '../../services/courses.service';
-import { AuthService } from '../../../auth/services/auth.service';
 
 @Component({
   selector: 'app-courses',
@@ -15,35 +14,38 @@ export class CoursesComponent implements OnInit {
   public courses: CourseInterface[] = [];
   private searchValue: string;
 
-  constructor(private router: Router, private searchPipe: SearchPipe, private coursesService: CoursesService,
-              private authService: AuthService) { }
+  constructor(private router: Router, private searchPipe: SearchPipe, private coursesService: CoursesService) { }
 
-  ngOnInit() {
-    this.courses = this.coursesService.getCourses();
+  public ngOnInit() {
+    this.getCourses();
   }
 
-  onChangedSearchValue(searchValue: string): void {
+  public getCourses(): void {
+    this.coursesService.getCourses().subscribe(courses => this.courses = courses);
+  }
+
+  public onChangedSearchValue(searchValue: string): void {
     this.searchValue = searchValue;
   }
 
-  onSearch(searchValue: string): void {
+  public onSearch(searchValue: string): void {
     if (searchValue) {
       this.courses = this.searchPipe.transform(this.courses, searchValue);
     } else {
-      this.courses = this.coursesService.getCourses();
+      this.getCourses();
     }
   }
 
-  onDelete(course: CourseInterface): void {
+  public onDelete(course: CourseInterface): void {
     const result: boolean = confirm('Do you really want to delete this course?');
     if (result) {
       this.coursesService.deleteCourse(course.id);
-      this.courses = this.coursesService.getCourses();
+      this.getCourses();
       this.onSearch(this.searchValue);
     }
   }
 
-  onShowMore(): void {
-    console.log('showMore button is clicked');
+  public onShowMore(): void {
+    // TODO: implement showing more courses
   }
 }
