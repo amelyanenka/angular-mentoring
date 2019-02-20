@@ -3,17 +3,19 @@ import { CourseInterface } from '../interfaces/course.interface';
 export class Course implements CourseInterface {
   id: number;
   title: string;
-  creation: number;
-  duration: number;
   description: string;
   topRated: boolean;
+  creation: number;
+  duration: number;
+  authors: object[];
 
-  constructor (id: number, title: string, creation: number, duration: number, description: string, topRated: boolean) {
+  constructor (id: number, title: string, description: string, topRated: boolean, creation: number, duration: number, authors: object[]) {
     this.id = id;
     this.title = title;
-    this.creation = creation;
-    this.duration = duration;
     this.description = description;
     this.topRated = topRated;
+    this.creation = creation;
+    this.duration = duration;
+    this.authors = authors;
   }
 }
