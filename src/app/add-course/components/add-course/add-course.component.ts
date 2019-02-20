@@ -8,16 +8,16 @@ import { CoursesService } from '../../../courses/services/courses.service';
   styleUrls: ['./add-course.component.css']
 })
 export class AddCourseComponent implements OnInit {
-  public id: number;
+  private id: number;
   public title: string;
   public description: string;
   public creation: number;
   public duration: number;
-  public exist = false;
+  private exist = false;
 
   constructor(private router: Router, private activatedRoute: ActivatedRoute, private coursesService: CoursesService) {}
 
-  ngOnInit() {
+  public ngOnInit() {
     this.creation = Date.now();
     this.activatedRoute.params.subscribe(data => {
       if (data.id !== 'new') {
@@ -32,20 +32,20 @@ export class AddCourseComponent implements OnInit {
     });
   }
 
-  onChangedDuration(duration: number): void {
+  public onChangedDuration(duration: number): void {
     this.duration = duration;
   }
 
-  onSave() {
+  public onSave() {
     if (this.exist) {
       this.coursesService.updateCourse(this.id, this.title, this.description);
     } else {
-      this.coursesService.createCourse(this.title, this.creation, this.duration, this.description, false);
+      this.coursesService.createCourse(this.title, this.description, false, this.creation, this.duration, []);
     }
     this.router.navigate(['courses']);
   }
 
-  onCancel() {
+  public onCancel() {
     this.router.navigate(['courses']);
   }
 }

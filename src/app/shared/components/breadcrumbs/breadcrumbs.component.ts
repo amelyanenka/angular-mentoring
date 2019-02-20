@@ -10,15 +10,15 @@ import { CoursesService } from '../../../courses/services/courses.service';
 export class BreadcrumbsComponent {
   constructor(private router: Router, private coursesService: CoursesService) {}
 
-  getBreadcrumbsLength() {
+  public getBreadcrumbsLength() {
     return this.router.url.slice(1).split('/').length;
   }
 
-  getBreadcrumbs() {
+  public getBreadcrumbs() {
     return this.router.url.slice(1).split('/');
   }
 
-  getLastBreadcrumb() {
+  public getLastBreadcrumb() {
     const breadcrumbs: string[] = this.getBreadcrumbs();
     let lastBreadcrumb: string = breadcrumbs[breadcrumbs.length - 1];
     if (lastBreadcrumb !== 'new') {
@@ -27,17 +27,15 @@ export class BreadcrumbsComponent {
     return lastBreadcrumb;
   }
 
-  navigateFromBreadcrumbs(index: number): void {
+  public navigateFromBreadcrumbs(index: number): void {
     const breadcrumbs: string[] = this.getBreadcrumbs();
     let navigateBreadcrumbs = '/';
-
     for (let i = 0; i < index + 1; i++) {
       navigateBreadcrumbs += breadcrumbs[i];
       if (i !== index) {
         navigateBreadcrumbs += '/';
       }
     }
-
     this.router.navigateByUrl(navigateBreadcrumbs);
   }
 }

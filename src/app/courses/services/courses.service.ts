@@ -16,10 +16,10 @@ export class CoursesService {
     return this.http.get<CourseInterface[]>('http://localhost:3004/courses');
   }
 
-  public createCourse(title: string, description: string, topRated: boolean, creation: number, duration: number, authors: object[]) {
+  public createCourse(title: string, description: string, topRated: boolean, creation: number, duration: number, authors: object[] = []) {
     this.courses = this.courses.sort((a, b) => a.id - b.id);
     const course: CourseInterface = new Course(this.courses[this.courses.length - 1].id + 1, title, description, topRated, creation,
-      duration, []);
+      duration, authors);
     this.courses.push(course);
   }
 
