@@ -1,6 +1,6 @@
 export interface UserInterface {
   id: number;
-  fakeToken: string;
+  token: string;
   name: object;
   login: string;
   password: string;
