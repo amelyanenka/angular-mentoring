@@ -7,12 +7,12 @@ import { AuthService } from '../../services/auth.service';
   styleUrls: ['./auth.component.css']
 })
 export class AuthComponent {
-  public name: string;
-  public pass: string;
+  public login: string;
+  public password: string;
 
   constructor(private authService: AuthService) {}
 
-  onLogin(name, pass): void {
-    this.authService.login(name, pass);
+  public onLogin(): void {
+    this.authService.login(this.login, this.password);
   }
 }

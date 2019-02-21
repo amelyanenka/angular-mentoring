@@ -20,7 +20,7 @@ export class CoursesComponent implements OnInit {
     this.getCourses();
   }
 
-  public getCourses(): void {
+  private getCourses(): void {
     this.coursesService.getCourses().subscribe(courses => this.courses = courses);
   }
 

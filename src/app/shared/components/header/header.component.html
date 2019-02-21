@@ -4,7 +4,7 @@
     <h1>ngVideo</h1>
   </div>
   <div class='auth' *ngIf='isAuthenticated()'>
-    <p>You're signed in as <span>{{getName()}}</span></p>
+    <p>You're signed in as <span>{{getUserFullName()}}</span></p>
     <button type='button' (click)='onLogout()'>Log out</button>
   </div>
 </header>

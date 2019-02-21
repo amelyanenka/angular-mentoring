@@ -1,66 +1,51 @@
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
 import { UserInterface } from '../../shared/interfaces/user.interface';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-  private userNameLocalStorageKey = 'name';
   private tokenLocalStorageKey = 'token';
-  private users: UserInterface[] = [
-    {
-      id: 1,
-      name: 'John Doe',
-      pass: '123'
-    },
-    {
-      id: 2,
-      name: 'Vadzim Yermalitski',
-      pass: '123'
-    },
-    {
-      id: 3,
-      name: 'Vasily',
-      pass: '123'
-    },
-    {
-      id: 4,
-      name: 'Ivan Amelyanenka',
-      pass: '123'
-    },
-    {
-      id: 5,
-      name: 'noname',
-      pass: '123'
-    }
-  ];
+  private users: UserInterface[];
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, private http: HttpClient) {}
 
-  login(name, pass): void {
-    const authUser = this.users.find(user => user.name === name);
-    if (!this.isAuthenticated() && authUser && authUser.pass === pass) {
-      localStorage.setItem(this.userNameLocalStorageKey, authUser.name);
-      localStorage.setItem(this.tokenLocalStorageKey, '1');
-      this.router.navigate(['courses']);
-    } else {
-      alert('Wrong name or password');
-    }
+  private getUsers(): Observable<UserInterface[]> {
+    return this.http.get<UserInterface[]>('http://localhost:3004/users');
   }
 
-  logout(): void {
-    if (this.isAuthenticated()) {
-      localStorage.removeItem(this.userNameLocalStorageKey);
-      localStorage.removeItem(this.tokenLocalStorageKey);
-    }
+  public login(login, password): void {
+    this.getUsers().subscribe(result => {
+      this.users = result;
+      const authUser: UserInterface = this.users.find(user => user.login === login);
+      if (!this.isAuthenticated() && authUser && authUser.password === password) {
+        localStorage.setItem(this.tokenLocalStorageKey, authUser.token);
+        this.router.navigate(['courses']);
+      } else {
+        alert('Wrong login or password');
+      }
+    });
   }
 
-  isAuthenticated(): boolean {
+  public logout(): void {
+    localStorage.removeItem(this.tokenLocalStorageKey);
+  }
+
+  public isAuthenticated(): boolean {
     return !!localStorage.getItem(this.tokenLocalStorageKey);
   }
 
-  getUserInfo(): string {
-    return this.isAuthenticated() ? localStorage.getItem(this.userNameLocalStorageKey) : '';
+  public getUserFullName(): string {
+    if (!this.users) {
+      this.getUsers().subscribe(result => {
+        this.users = result;
+      });
+    }
+    const token: string = localStorage.getItem(this.tokenLocalStorageKey);
+    const authUser: UserInterface = this.users.find(user => user.token === token);
+    return `${authUser.name.first} ${authUser.name.last}`;
   }
 }
