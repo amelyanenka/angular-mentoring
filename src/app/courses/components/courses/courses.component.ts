@@ -21,7 +21,10 @@ export class CoursesComponent implements OnInit {
   }
 
   private getCourses(): void {
-    this.coursesService.getCourses().subscribe(courses => this.courses = courses);
+    this.coursesService.getCourses().subscribe(courses => {
+      this.courses = courses;
+      this.coursesService.courses = this.courses;
+    });
   }
 
   public onChangedSearchValue(searchValue: string): void {

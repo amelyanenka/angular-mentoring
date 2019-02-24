@@ -9,7 +9,7 @@ import { Course } from '../../shared/entities/course';
   providedIn: 'root'
 })
 export class CoursesService {
-  private courses: CourseInterface[];
+  public courses: CourseInterface[];
 
   constructor(private http: HttpClient) {}
 
