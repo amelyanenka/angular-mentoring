@@ -3,13 +3,12 @@ const router = express.Router();
 const url = require('url');
 
 module.exports = (server) => {
-
-	router.post('/auth/login', (req, res, next) => {
-		let users = server.db.getState().users,
-			matchedUser = users.find((user) => {
-				console.log(user);
-				return user.login.toUpperCase() === req.body.login.toUpperCase();
-			});
+	router.post('/auth/login', (req, res) => {
+		const users = server.db.getState().users;
+    const matchedUser = users.find((user) => {
+      console.log(user);
+      return user.login.toUpperCase() === req.body.login.toUpperCase();
+    });
 
 		if(!matchedUser) {
 			res.status(401).send('Wrong username');
@@ -19,13 +18,13 @@ module.exports = (server) => {
 			res.status(401).send("Wrong password");
 		}
 	});
-		
-	router.post('/auth/userinfo', (req, res, next) => {
-		let users = server.db.getState().users,
-			matchedUser = users.find((user) => {
-				console.log(user);
-				return user.fakeToken === req.header('Authorization');
-			});
+
+	router.post('/auth/userinfo', (req, res) => {
+		const users = server.db.getState().users;
+    const matchedUser = users.find((user) => {
+      console.log(user);
+      return user.fakeToken === req.header('Authorization');
+    });
 
 		if(!matchedUser) {
 			res.status(401).send('Unauthorized');

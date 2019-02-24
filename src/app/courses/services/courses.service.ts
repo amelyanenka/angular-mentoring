@@ -17,8 +17,8 @@ export class CoursesService {
     return this.http.get<CourseInterface[]>(this.URL);
   }
 
-  public getCoursesWithParams(start: number): Observable<CourseInterface[]> {
-    return this.http.get<CourseInterface[]>(this.URL, {params: {start: `${start}`, count: this.pagination}});
+  public getCoursesWithParams(start: number, textFragment: string = ''): Observable<CourseInterface[]> {
+    return this.http.get<CourseInterface[]>(this.URL, {params: {start: `${start}`, count: this.pagination, textFragment: textFragment}});
   }
 
   public createCourse(course: CourseInterface): Observable<CourseInterface[]> {

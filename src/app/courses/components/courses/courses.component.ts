@@ -16,7 +16,7 @@ export class CoursesComponent implements OnInit {
   public lastPage = false;
   private searchValue: string;
 
-  constructor(private router: Router, private searchPipe: SearchPipe, private coursesService: CoursesService) { }
+  constructor(private router: Router, private searchPipe: SearchPipe, private coursesService: CoursesService) {}
 
   public ngOnInit() {
     this.getCourses();
@@ -33,9 +33,12 @@ export class CoursesComponent implements OnInit {
     this.searchValue = searchValue;
   }
 
-  public onSearch(searchValue: string): void {
-    if (searchValue) {
-      this.courses = this.searchPipe.transform(this.courses, searchValue);
+  public onSearch(): void {
+    if (this.searchValue) {
+      this.coursesService.getCoursesWithParams(0, this.searchValue).subscribe(courses => {
+        this.courses = courses;
+        this.coursesService.courses = this.courses;
+      });
     } else {
       this.getCourses();
     }
@@ -49,14 +52,14 @@ export class CoursesComponent implements OnInit {
         this.coursesService.getCoursesWithParams(this.currentPage).subscribe(courses => {
           this.courses = courses;
           this.coursesService.courses = this.courses;
-          this.onSearch(this.searchValue);
+          this.onSearch();
         });
       });
     }
   }
 
   public onShowMore(): void {
-    this.coursesService.getCoursesWithParams(++this.currentPage * this.coursesService.pagination).subscribe(courses => {
+    this.coursesService.getCoursesWithParams(++this.currentPage * this.coursesService.pagination, this.searchValue).subscribe(courses => {
       this.courses = this.courses.concat(courses);
       this.coursesService.courses = this.courses;
       this.lastPage = !courses.length;

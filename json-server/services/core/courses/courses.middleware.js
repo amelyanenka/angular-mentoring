@@ -3,7 +3,7 @@ const router = express.Router();
 const url = require('url');
 
 module.exports = server => {
-	router.get('/courses', (req, res, next) => {
+	router.get('/courses', (req, res) => {
 		const url_parts = url.parse(req.originalUrl, true);
     const query = url_parts.query;
     const from = +query.start || 0;
@@ -11,7 +11,7 @@ module.exports = server => {
     let courses = server.db.getState().courses;
 
     if (query.textFragment) {
-      courses = courses.filter(course => course.name.concat(course.description).toUpperCase().indexOf(query.textFragment.toUpperCase()) >= 0);
+      courses = courses.filter(course => course.title.concat(course.description).toUpperCase().indexOf(query.textFragment.toUpperCase()) >= 0);
     }
 
     courses.sort((a, b) => b.creation - a.creation);
