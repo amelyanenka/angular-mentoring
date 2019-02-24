@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { CourseInterface } from '../../shared/interfaces/course.interface';
+import { AuthorInterface } from '../../shared/interfaces/author.interface';
 import { Course } from '../../shared/entities/course';
 
 @Injectable({
@@ -16,7 +17,8 @@ export class CoursesService {
     return this.http.get<CourseInterface[]>('http://localhost:3004/courses');
   }
 
-  public createCourse(title: string, description: string, topRated: boolean, creation: number, duration: number, authors: object[] = []) {
+  public createCourse(title: string, description: string, topRated: boolean, creation: number, duration: number,
+                      authors: AuthorInterface[] = []) {
     this.courses = this.courses.sort((a, b) => a.id - b.id);
     const course: CourseInterface = new Course(this.courses[this.courses.length - 1].id + 1, title, description, topRated, creation,
       duration, authors);

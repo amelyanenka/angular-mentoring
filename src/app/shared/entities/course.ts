@@ -1,4 +1,5 @@
 import { CourseInterface } from '../interfaces/course.interface';
+import { AuthorInterface } from '../interfaces/author.interface';
 
 export class Course implements CourseInterface {
   id: number;
@@ -7,9 +8,10 @@ export class Course implements CourseInterface {
   topRated: boolean;
   creation: number;
   duration: number;
-  authors: object[];
+  authors: AuthorInterface[];
 
-  constructor (id: number, title: string, description: string, topRated: boolean, creation: number, duration: number, authors: object[]) {
+  constructor (id: number, title: string, description: string, topRated: boolean, creation: number, duration: number,
+               authors: AuthorInterface[]) {
     this.id = id;
     this.title = title;
     this.description = description;

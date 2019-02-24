@@ -1,9 +1,6 @@
 import { NameInterface } from './name.interface';
 
-export interface UserInterface {
+export interface AuthorInterface {
   id: number;
-  token: string;
   name: NameInterface;
-  login: string;
-  password: string;
 }
