@@ -3,17 +3,17 @@
     <form>
       <div>
         <p>Title:</p>
-        <input type='text' name='title' placeholder='Title' [(ngModel)]='title'>
+        <input type='text' name='title' placeholder='Title' [(ngModel)]='course.title'>
       </div>
       <div>
         <p>Description:</p>
-        <textarea type='text' name='description' placeholder='Some words about this course' [(ngModel)]='description'></textarea>
+        <textarea type='text' name='description' placeholder='Some words about this course' [(ngModel)]='course.description'></textarea>
       </div>
       <div>
-        <app-creation [creation]='creation'></app-creation>
+        <app-creation [creation]='course.creation'></app-creation>
       </div>
       <div>
-        <app-duration [exist]='exist' [(duration)]='duration' (changedDuration)='onChangedDuration($event)'></app-duration>
+        <app-duration [exist]='exist' [(duration)]='course.duration' (changedDuration)='onChangedDuration($event)'></app-duration>
       </div>
       <div>
         <app-authors></app-authors>

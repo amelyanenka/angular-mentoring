@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { CourseInterface } from '../../../shared/interfaces/course.interface';
+import { Course } from '../../../shared/entities/course';
 import { CoursesService } from '../../../courses/services/courses.service';
 
 @Component({
@@ -8,40 +10,38 @@ import { CoursesService } from '../../../courses/services/courses.service';
   styleUrls: ['./add-course.component.css']
 })
 export class AddCourseComponent implements OnInit {
-  private id: number;
-  public title: string;
-  public description: string;
-  public creation: number;
-  public duration: number;
+  public course: CourseInterface;
   private exist = false;
 
   constructor(private router: Router, private activatedRoute: ActivatedRoute, private coursesService: CoursesService) {}
 
   public ngOnInit() {
-    this.creation = Date.now();
     this.activatedRoute.params.subscribe(data => {
       if (data.id !== 'new') {
-        this.id = +data.id;
-        const course = this.coursesService.getCourseById(this.id);
-        this.title = course.title;
-        this.description = course.description;
-        this.creation = course.creation;
-        this.duration = course.duration;
+        this.course = this.coursesService.getCourseById(+data.id);
         this.exist = true;
+      } else {
+        this.coursesService.courses.sort((a, b) => a.id - b.id);
+        const id = this.coursesService.courses[this.coursesService.courses.length - 1].id + 1;
+        this.course = new Course(id, null, null, false, Date.now(), null, []);
       }
     });
   }
 
   public onChangedDuration(duration: number): void {
-    this.duration = duration;
+    this.course.duration = duration;
   }
 
   public onSave(): void {
     if (this.exist) {
-      this.coursesService.updateCourse(this.id, this.title, this.description);
-      this.router.navigate(['courses']);
+      this.coursesService.updateCourse(this.course).subscribe(() =>
+        this.coursesService.getCourses().subscribe(courses => {
+          this.coursesService.courses = courses;
+          this.router.navigate(['courses']);
+        })
+      );
     } else {
-      this.coursesService.createCourse(this.title, this.description, false, this.creation, this.duration, []).subscribe(() =>
+      this.coursesService.createCourse(this.course).subscribe(() =>
         this.coursesService.getCourses().subscribe(courses => {
           this.coursesService.courses = courses;
           this.router.navigate(['courses']);
