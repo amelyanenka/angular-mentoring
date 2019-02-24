@@ -36,16 +36,21 @@ export class AddCourseComponent implements OnInit {
     this.duration = duration;
   }
 
-  public onSave() {
+  public onSave(): void {
     if (this.exist) {
       this.coursesService.updateCourse(this.id, this.title, this.description);
+      this.router.navigate(['courses']);
     } else {
-      this.coursesService.createCourse(this.title, this.description, false, this.creation, this.duration, []);
+      this.coursesService.createCourse(this.title, this.description, false, this.creation, this.duration, []).subscribe(() =>
+        this.coursesService.getCourses().subscribe(courses => {
+          this.coursesService.courses = courses;
+          this.router.navigate(['courses']);
+        })
+      );
     }
-    this.router.navigate(['courses']);
   }
 
-  public onCancel() {
+  public onCancel(): void {
     this.router.navigate(['courses']);
   }
 }

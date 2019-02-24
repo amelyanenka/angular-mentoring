@@ -3,40 +3,38 @@ import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { CourseInterface } from '../../shared/interfaces/course.interface';
 import { AuthorInterface } from '../../shared/interfaces/author.interface';
-import { Course } from '../../shared/entities/course';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CoursesService {
   public courses: CourseInterface[];
+  private URL = 'http://localhost:3004/courses';
 
   constructor(private http: HttpClient) {}
 
   public getCourses(): Observable<CourseInterface[]> {
-    return this.http.get<CourseInterface[]>('http://localhost:3004/courses');
+    return this.http.get<CourseInterface[]>(this.URL);
   }
 
   public createCourse(title: string, description: string, topRated: boolean, creation: number, duration: number,
-                      authors: AuthorInterface[] = []) {
+                      authors: AuthorInterface[] = []): Observable<CourseInterface[]> {
     this.courses = this.courses.sort((a, b) => a.id - b.id);
-    const course: CourseInterface = new Course(this.courses[this.courses.length - 1].id + 1, title, description, topRated, creation,
-      duration, authors);
-    this.courses.push(course);
+    const id = this.courses[this.courses.length - 1].id + 1;
+    return this.http.post<CourseInterface[]>(this.URL, {id, title, description, topRated, creation, duration, authors});
   }
 
-  public getCourseById(id: number) {
+  public getCourseById(id: number): CourseInterface {
     return this.courses.find(course => course.id === id);
   }
 
-  public updateCourse(id: number, title: string, description: string) {
+  public updateCourse(id: number, title: string, description: string): void {
     const course: CourseInterface = this.getCourseById(id);
     course.title = title;
     course.description = description;
   }
 
-  public deleteCourse(id: number): void {
-    const index: number = this.courses.findIndex(course => course.id === id);
-    this.courses.splice(index, 1);
+  public deleteCourse(id: number): Observable<CourseInterface[]> {
+    return this.http.delete<CourseInterface>(`${this.URL}/${id}`);
   }
 }

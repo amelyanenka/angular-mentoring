@@ -10,11 +10,12 @@ import { UserInterface } from '../../shared/interfaces/user.interface';
 export class AuthService {
   private tokenLocalStorageKey = 'token';
   private users: UserInterface[];
+  private URL = 'http://localhost:3004/users';
 
   constructor(private router: Router, private http: HttpClient) {}
 
   private getUsers(): Observable<UserInterface[]> {
-    return this.http.get<UserInterface[]>('http://localhost:3004/users');
+    return this.http.get<UserInterface[]>(this.URL);
   }
 
   public login(login, password): void {
@@ -39,11 +40,6 @@ export class AuthService {
   }
 
   public getUserFullName(): string {
-    if (!this.users) {
-      this.getUsers().subscribe(result => {
-        this.users = result;
-      });
-    }
     const token: string = localStorage.getItem(this.tokenLocalStorageKey);
     const authUser: UserInterface = this.users.find(user => user.token === token);
     return `${authUser.name.first} ${authUser.name.last}`;

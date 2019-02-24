@@ -42,9 +42,13 @@ export class CoursesComponent implements OnInit {
   public onDelete(course: CourseInterface): void {
     const result: boolean = confirm('Do you really want to delete this course?');
     if (result) {
-      this.coursesService.deleteCourse(course.id);
-      this.getCourses();
-      this.onSearch(this.searchValue);
+      this.coursesService.deleteCourse(course.id).subscribe(() =>
+        this.coursesService.getCourses().subscribe(courses => {
+          this.courses = courses;
+          this.coursesService.courses = courses;
+          this.onSearch(this.searchValue);
+        })
+      );
     }
   }
 
