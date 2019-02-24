@@ -8,12 +8,17 @@ import { CourseInterface } from '../../shared/interfaces/course.interface';
 })
 export class CoursesService {
   public courses: CourseInterface[];
+  public pagination = '10';
   private URL = 'http://localhost:3004/courses';
 
   constructor(private http: HttpClient) {}
 
-  public getCourses(): Observable<CourseInterface[]> {
+  public getAllCourses(): Observable<CourseInterface[]> {
     return this.http.get<CourseInterface[]>(this.URL);
+  }
+
+  public getCoursesWithParams(start: number): Observable<CourseInterface[]> {
+    return this.http.get<CourseInterface[]>(this.URL, {params: {start: `${start}`, count: this.pagination}});
   }
 
   public createCourse(course: CourseInterface): Observable<CourseInterface[]> {

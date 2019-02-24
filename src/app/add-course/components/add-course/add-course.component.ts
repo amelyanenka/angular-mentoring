@@ -21,9 +21,11 @@ export class AddCourseComponent implements OnInit {
         this.course = this.coursesService.getCourseById(+data.id);
         this.exist = true;
       } else {
-        this.coursesService.courses.sort((a, b) => a.id - b.id);
-        const id = this.coursesService.courses[this.coursesService.courses.length - 1].id + 1;
-        this.course = new Course(id, null, null, false, Date.now(), null, []);
+        this.coursesService.getAllCourses().subscribe(courses => {
+          courses.sort((a, b) => a.id - b.id);
+          const id = courses[courses.length - 1].id + 1;
+          this.course = new Course(id, null, null, false, Date.now(), null, []);
+        });
       }
     });
   }
@@ -34,19 +36,9 @@ export class AddCourseComponent implements OnInit {
 
   public onSave(): void {
     if (this.exist) {
-      this.coursesService.updateCourse(this.course).subscribe(() =>
-        this.coursesService.getCourses().subscribe(courses => {
-          this.coursesService.courses = courses;
-          this.router.navigate(['courses']);
-        })
-      );
+      this.coursesService.updateCourse(this.course).subscribe(() => this.router.navigate(['courses']));
     } else {
-      this.coursesService.createCourse(this.course).subscribe(() =>
-        this.coursesService.getCourses().subscribe(courses => {
-          this.coursesService.courses = courses;
-          this.router.navigate(['courses']);
-        })
-      );
+      this.coursesService.createCourse(this.course).subscribe(() => this.router.navigate(['courses']));
     }
   }
 

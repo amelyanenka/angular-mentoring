@@ -12,6 +12,8 @@ import { CoursesService } from '../../services/courses.service';
 })
 export class CoursesComponent implements OnInit {
   public courses: CourseInterface[] = [];
+  private currentPage = 0;
+  public lastPage = false;
   private searchValue: string;
 
   constructor(private router: Router, private searchPipe: SearchPipe, private coursesService: CoursesService) { }
@@ -21,7 +23,7 @@ export class CoursesComponent implements OnInit {
   }
 
   private getCourses(): void {
-    this.coursesService.getCourses().subscribe(courses => {
+    this.coursesService.getCoursesWithParams(0).subscribe(courses => {
       this.courses = courses;
       this.coursesService.courses = this.courses;
     });
@@ -42,17 +44,22 @@ export class CoursesComponent implements OnInit {
   public onDelete(course: CourseInterface): void {
     const result: boolean = confirm('Do you really want to delete this course?');
     if (result) {
-      this.coursesService.deleteCourse(course.id).subscribe(() =>
-        this.coursesService.getCourses().subscribe(courses => {
+      this.coursesService.deleteCourse(course.id).subscribe(() => {
+        this.currentPage = 0;
+        this.coursesService.getCoursesWithParams(this.currentPage).subscribe(courses => {
           this.courses = courses;
-          this.coursesService.courses = courses;
+          this.coursesService.courses = this.courses;
           this.onSearch(this.searchValue);
-        })
-      );
+        });
+      });
     }
   }
 
   public onShowMore(): void {
-    // TODO: implement showing more courses
+    this.coursesService.getCoursesWithParams(++this.currentPage * this.coursesService.pagination).subscribe(courses => {
+      this.courses = this.courses.concat(courses);
+      this.coursesService.courses = this.courses;
+      this.lastPage = !courses.length;
+    });
   }
 }

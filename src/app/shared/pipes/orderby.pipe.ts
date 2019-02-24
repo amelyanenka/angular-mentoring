@@ -6,6 +6,6 @@ import { CourseInterface } from '../interfaces/course.interface';
 })
 export class OrderByPipe implements PipeTransform {
   transform(courses: CourseInterface[], orderBy: string) {
-    return orderBy ? courses.sort((a, b) => a[orderBy] - b[orderBy]) : courses;
+    return orderBy ? courses.sort((a, b) => b[orderBy] - a[orderBy]) : courses;
   }
 }
