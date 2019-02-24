@@ -1,14 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { SearchPipe } from '../../../shared/pipes/search.pipe';
 import { CourseInterface } from '../../../shared/interfaces/course.interface';
 import { CoursesService } from '../../services/courses.service';
 
 @Component({
   selector: 'app-courses',
   templateUrl: './courses.component.html',
-  styleUrls: ['./courses.component.css'],
-  providers: [SearchPipe]
+  styleUrls: ['./courses.component.css']
 })
 export class CoursesComponent implements OnInit {
   public courses: CourseInterface[] = [];
@@ -16,7 +14,7 @@ export class CoursesComponent implements OnInit {
   public lastPage = false;
   private searchValue: string;
 
-  constructor(private router: Router, private searchPipe: SearchPipe, private coursesService: CoursesService) {}
+  constructor(private router: Router, private coursesService: CoursesService) {}
 
   public ngOnInit() {
     this.getCourses();

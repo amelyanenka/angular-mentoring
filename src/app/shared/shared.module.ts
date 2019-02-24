@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 import { BorderDirective } from './directives/border.directive';
 import { TimePipe } from './pipes/time.pipe';
 import { OrderByPipe } from './pipes/orderby.pipe';
-import { SearchPipe } from './pipes/search.pipe';
 import { FirstCharUppercasePipe } from './pipes/firstcharuppercase.pipe';
 import { HeaderComponent } from './components/header/header.component';
 import { BreadcrumbsComponent } from './components/breadcrumbs/breadcrumbs.component';
@@ -19,7 +18,6 @@ import { NoContentComponent } from './components/no-content/no-content.component
     BorderDirective,
     TimePipe,
     OrderByPipe,
-    SearchPipe,
     FirstCharUppercasePipe
   ],
   imports: [
@@ -32,7 +30,6 @@ import { NoContentComponent } from './components/no-content/no-content.component
     BorderDirective,
     TimePipe,
     OrderByPipe,
-    SearchPipe,
     FirstCharUppercasePipe
   ]
 })
