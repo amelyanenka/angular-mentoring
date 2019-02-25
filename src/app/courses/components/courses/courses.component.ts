@@ -57,7 +57,7 @@ export class CoursesComponent implements OnInit {
   }
 
   public onShowMore(): void {
-    this.coursesService.getCoursesWithParams(++this.currentPage * this.coursesService.pagination, this.searchValue).subscribe(courses => {
+    this.coursesService.getCoursesWithParams(++this.currentPage * +this.coursesService.pagination, this.searchValue).subscribe(courses => {
       this.courses = this.courses.concat(courses);
       this.coursesService.courses = this.courses;
       this.lastPage = !courses.length;
