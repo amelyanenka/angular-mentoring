@@ -16,7 +16,7 @@ export class HeaderComponent {
   }
 
   public getUserFullName(): string {
-    return this.authService.getUserFullName();
+    return `${this.authService.name.first} ${this.authService.name.last}`;
   }
 
   public isAuthenticated(): boolean {
