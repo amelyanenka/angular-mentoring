@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { NameInterface } from '../../shared/interfaces/name.interface';
 import { UserInterface } from '../../shared/interfaces/user.interface';
 

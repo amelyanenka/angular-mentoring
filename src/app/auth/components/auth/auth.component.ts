@@ -20,6 +20,6 @@ export class AuthComponent {
         this.authService.name = user.name;
         this.router.navigate(['courses']);
       });
-    });
+    }, error => alert(error.error));
   }
 }

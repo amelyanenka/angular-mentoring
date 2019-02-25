@@ -6,12 +6,12 @@ module.exports = (server) => {
 		const users = server.db.getState().users;
     const matchedUser = users.find(user => user.login === req.body.login);
 
-		if(!matchedUser) {
+		if (!matchedUser) {
 			res.status(401).send('Wrong username');
-		} else if(matchedUser.password === req.body.password) {
+		} else if (matchedUser.password === req.body.password) {
 			res.json({token: matchedUser.token});
 		} else {
-			res.status(401).send("Wrong password");
+			res.status(401).send('Wrong password');
 		}
 	});
 
@@ -19,7 +19,7 @@ module.exports = (server) => {
 		const users = server.db.getState().users;
     const matchedUser = users.find(user => user.token === req.body.token);
 
-		if(!matchedUser) {
+		if (!matchedUser) {
 			res.status(401).send('Unauthorized');
 		} else {
 			res.json(matchedUser);
