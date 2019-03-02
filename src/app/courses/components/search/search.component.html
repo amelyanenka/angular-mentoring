@@ -3,8 +3,8 @@
     <input type='text'
            placeholder='name'
            [ngModel]='searchValue'
-           (ngModelChange)='onChangedSearchValue($event)'>
-    <button (click)='onSearch()'>Search</button>
+           (ngModelChange)='onChangedSearchValue($event)'
+           (keyup)="onSearch()">
   </div>
   <button (click)='onAddCourse()'>Add course</button>
 </div>
