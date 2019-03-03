@@ -17,10 +17,10 @@ export class AuthService {
     this.getUserInfo();
   }
 
-  public login(login: string, password: string): Observable<string> {
-    return this.http.post<string>(`${this.URL}/login`, {login, password})
+  public login(login: string, password: string): Observable<any> {
+    return this.http.post<any>(`${this.URL}/login`, {login, password})
       .pipe(
-        tap((result: string) => {
+        tap((result: any) => {
           localStorage.setItem(this.tokenLocalStorageKey, result.token);
           this.getUserInfo();
         })
