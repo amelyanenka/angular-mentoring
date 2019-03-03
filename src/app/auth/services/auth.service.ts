@@ -1,22 +1,30 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
+import { tap } from 'rxjs/operators';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
-import { NameInterface } from '../../shared/interfaces/name.interface';
 import { UserInterface } from '../../shared/interfaces/user.interface';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-  public name: NameInterface;
+  public userInfoSubject = new Subject<UserInterface>();
   public tokenLocalStorageKey = 'token';
   private URL = 'http://localhost:3004/auth';
 
-  constructor(private router: Router, private http: HttpClient) {}
+  constructor(private router: Router, private http: HttpClient) {
+    this.getUserInfo();
+  }
 
-  public login(login: string, password: string): Observable<UserInterface> {
-    return this.http.post<UserInterface>(`${this.URL}/login`, {login, password});
+  public login(login: string, password: string): Observable<string> {
+    return this.http.post<string>(`${this.URL}/login`, {login, password})
+      .pipe(
+        tap((result: string) => {
+          localStorage.setItem(this.tokenLocalStorageKey, result.token);
+          this.getUserInfo();
+        })
+      );
   }
 
   public logout(): void {
@@ -27,7 +35,10 @@ export class AuthService {
     return !!localStorage.getItem(this.tokenLocalStorageKey);
   }
 
-  public getUserInfo(): Observable<UserInterface> {
-    return this.http.post<UserInterface>(`${this.URL}/userinfo`, {token: localStorage.getItem(this.tokenLocalStorageKey)});
+  public getUserInfo(): void {
+    if (this.isAuthenticated()) {
+      this.http.post<UserInterface>(`${this.URL}/userinfo`, {token: localStorage.getItem(this.tokenLocalStorageKey)})
+        .subscribe((user: UserInterface) => this.userInfoSubject.next(user));
+    }
   }
 }

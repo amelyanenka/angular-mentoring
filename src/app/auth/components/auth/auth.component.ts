@@ -14,12 +14,6 @@ export class AuthComponent {
   constructor(private router: Router, private authService: AuthService) {}
 
   public onLogin(): void {
-    this.authService.login(this.login, this.password).subscribe(result => {
-      localStorage.setItem(this.authService.tokenLocalStorageKey, result.token);
-      this.authService.getUserInfo().subscribe(user => {
-        this.authService.name = user.name;
-        this.router.navigate(['courses']);
-      });
-    }, error => alert(error.error));
+    this.authService.login(this.login, this.password).subscribe(() => this.router.navigate(['courses']), error => alert(error.error));
   }
 }
