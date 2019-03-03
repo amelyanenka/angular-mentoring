@@ -5,6 +5,7 @@ import { ROUTES } from './app.routes';
 import { CanActivateGuard } from './shared/guards/canactivate.guard';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { AuthInterceptor } from './shared/interceptors/auth.interceptor';
+import { LoaderInterceptor } from './shared/interceptors/loader.interceptor';
 import { AppComponent } from './app.component';
 import { SharedModule } from './shared/shared.module';
 import { CoursesModule } from './courses/courses.module';
@@ -29,7 +30,8 @@ import { AddCourseModule } from './add-course/add-course.module';
   ],
   providers: [
     CanActivateGuard,
-    {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}
+    {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true},
+    {provide: HTTP_INTERCEPTORS, useClass: LoaderInterceptor, multi: true}
   ]
 })
 export class AppModule {}

@@ -7,6 +7,7 @@ import { FirstCharUppercasePipe } from './pipes/firstcharuppercase.pipe';
 import { HeaderComponent } from './components/header/header.component';
 import { BreadcrumbsComponent } from './components/breadcrumbs/breadcrumbs.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { LoaderComponent } from './components/loader/loader.component';
 import { NoContentComponent } from './components/no-content/no-content.component';
 
 @NgModule({
@@ -14,6 +15,7 @@ import { NoContentComponent } from './components/no-content/no-content.component
     HeaderComponent,
     BreadcrumbsComponent,
     FooterComponent,
+    LoaderComponent,
     NoContentComponent,
     BorderDirective,
     TimePipe,
@@ -27,6 +29,7 @@ import { NoContentComponent } from './components/no-content/no-content.component
     HeaderComponent,
     BreadcrumbsComponent,
     FooterComponent,
+    LoaderComponent,
     BorderDirective,
     TimePipe,
     OrderByPipe,

@@ -4,7 +4,7 @@
            placeholder='name'
            [ngModel]='searchValue'
            (ngModelChange)='onChangedSearchValue($event)'
-           (keyup)="onSearch()">
+           (keyup)='onSearch()'>
   </div>
   <button (click)='onAddCourse()'>Add course</button>
 </div>

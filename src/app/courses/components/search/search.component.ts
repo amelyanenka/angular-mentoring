@@ -21,7 +21,7 @@ export class SearchComponent implements OnInit {
     this.searchSubject
       .pipe(
         filter(() => this.searchValue.length >= 3 || this.searchValue.length === 0),
-        debounceTime(1000)
+        debounceTime(600)
       )
       .subscribe(() => this.search.emit(this.searchValue));
   }
